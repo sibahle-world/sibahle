@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sibahle | A Birthday Reflection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@100;200;300;400&display=swap');
+        
+        :root {
+            --bg: #f7f5f2; /* Warm Bone/Satin */
+            --text-main: #1c1c1c; /* Deep Charcoal Ink */
+            --text-dim: #737373;
+            --accent: #c5a059; /* Muted Champagne Gold */
+            --card-bg: #ffffff;
+            --petal-color: #d4a5a5; /* Darker Vintage Rose */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Luxury Portal Overlay */
+        #portal {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1.8s cubic-bezier(0.8, 0, 0.2, 1);
+        }
+
+        .portal-exit {
+            transform: translateY(-100%);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            background: #e5e5e5;
+            aspect-ratio: 4/5;
+            border-radius: 2px;
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+        }
+
+        .gold-border {
+            border-left: 1px solid rgba(197, 160, 89, 0.4);
+        }
+
+        .track-card {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 1.5rem 0;
+            transition: all 0.4s ease;
+        }
+        
+        .track-card:hover {
+            padding-left: 10px;
+            border-bottom-color: var(--accent);
+        }
+
+        /* PETAL ANIMATIONS - UPDATED FOR VISIBILITY */
+        #petal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5; /* Behind content but above background */
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            background-color: var(--petal-color);
+            border-radius: 150% 0 150% 0;
+            opacity: 0;
+            filter: blur(0.5px);
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.05);
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translate(0, -10%) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.6; /* Increased opacity for visibility */
+            }
+            85% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(150px, 110vh) rotate(540deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="selection:bg-stone-200">
+
+    <!-- PORTAL SECTION -->
+    <div id="portal">
+        <h3 class="uppercase tracking-[0.6em] text-[10px] text-stone-400 mb-10">FROM ME TO YOU AND ONLY YOU</h3>
+        <h1 class="serif text-5xl md:text-8xl italic font-light mb-8 text-stone-800">Hello, Sibahle</h1>
+        <p class="text-stone-400 text-sm tracking-widest uppercase mb-12 font-light">A small corner of the internet, made just for YOU.</p>
+        <button onclick="enterPortal()" class="group relative px-14 py-5 border border-stone-300 text-[10px] tracking-[0.4em] uppercase hover:bg-stone-900 hover:text-white transition-all duration-1000">
+            Enter
+        </button>
+    </div>
+
+    <!-- PETAL BACKGROUND -->
+    <div id="petal-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-6xl mx-auto px-6 md:px-12 pt-40 relative z-10">
+        
+        <!-- HEADER -->
+        <nav class="flex justify-between items-center mb-48 relative z-20">
+            <div class="text-[10px] tracking-[0.4em] uppercase text-stone-400">Sibahle's World</div>
+            <div class="serif italic text-3xl text-stone-800">S.</div>
+            <div class="text-[10px] tracking-[0.4em] uppercase text-stone-400">27.12.'02</div>
+        </nav>
+
+        <!-- SECTION: THE MOMENT -->
+        <section class="reveal mb-64 flex flex-col items-center text-center">
+            <span class="text-accent text-3xl mb-12">✧</span>
+            <h2 class="serif text-5xl md:text-7xl italic mb-14 font-light text-stone-800">The Moment</h2>
+            <div class="max-w-2xl space-y-10 text-stone-500 font-light text-xl leading-relaxed">
+                <p>Today felt like a good reason to pause.</p>
+                <p>Not because everything needs a big gesture, but because sometimes it’s nice to acknowledge someone quietly and intentionally.</p>
+                <p class="text-stone-900 italic serif text-2xl">This is just that.</p>
+            </div>
+        </section>
+
+        <!-- SECTION: ABOUT YOU -->
+        <section class="reveal mb-64 grid md:grid-cols-2 gap-24 items-center">
+            <div class="image-container">
+                <img src="herpictures/SIBAHLE 1.jpeg" alt="Portrait Placeholder" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000 opacity-90">
+            </div>
+            <div class="gold-border pl-16">
+                <h2 class="serif text-5xl italic mb-12 font-light text-stone-800">About You</h2>
+                <div class="space-y-8 text-stone-500 font-light text-lg leading-loose">
+                    <p>You come across as someone who’s naturally grounded. There’s an ease in how you speak, how you move through conversation, how you listen.</p>
+                    <p>Nothing forced. Nothing performative.</p>
+                    <p>Just a calm presence that makes moments feel lighter than they were before.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: THE MOOD -->
+        <section class="reveal mb-64">
+            <div class="flex flex-col md:flex-row justify-between items-baseline mb-24 border-b border-stone-200 pb-12">
+                <h2 class="serif text-5xl md:text-7xl italic font-light text-stone-800">The Mood</h2>
+                <span class="text-[11px] tracking-[0.3em] uppercase text-stone-400">A Small Soundtrack</span>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-x-32">
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">01</span>
+                    <h4 class="text-2xl font-light text-stone-800">Tems — Free Mind</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Calm, honest, grounding.</p>
+                </div>
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">02</span>
+                    <h4 class="text-2xl font-light text-stone-800">Brent Faiyaz — Gravity</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Smooth, reflective, unforced.</p>
+                </div>
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">03</span>
+                    <h4 class="text-2xl font-light text-stone-800">Snoh Aalegra — Find Someone Like You</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Gentle emotion without heaviness.</p>
+                </div>
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">04</span>
+                    <h4 class="text-2xl font-light text-stone-800">Odeal — Coffee</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Intimate, relaxed, late-afternoon energy.</p>
+                </div>
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">05</span>
+                    <h4 class="text-2xl font-light text-stone-800">Wizkid — Essence (Slow)</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Familiar, warm, effortless.</p>
+                </div>
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">06</span>
+                    <h4 class="text-2xl font-light text-stone-800">H.E.R. — Damage</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Soft vulnerability, beautiful tone.</p>
+                </div>
+                <div class="track-card">
+                    <span class="text-[10px] text-accent tracking-widest mb-3 block">07</span>
+                    <h4 class="text-2xl font-light text-stone-800"> JayO — Pure Water</h4>
+                    <p class="text-sm text-stone-400 font-light italic mt-2">Peaceful, present, grounding.</p>
+                </div>
+            </div>
+            <p class="mt-16 text-center text-[10px] text-stone-400 uppercase tracking-[0.4em]">This list can grow, shrink, or change, just like moods do.</p>
+        </section>
+
+        <div id="playlist" class="playlist-card">
+        <h2>Curated Playlist</h2>
+<p class="mt-16 text-center text-[10px] text-stone-400 uppercase tracking-[0.4em]">Here's a playlist i made just for you. Click below to open it on Apple Music.</p>
+<BR><BR>
+<a href="https://music.apple.com/za/playlist/made-for-you/pl.u-JPAZERPTLxDzY99" target="_blank" class="playlist-btn">CLICK HERE</a>
+        </div>
+
+        <BR><BR>
+
+        <!-- SECTION: APPRECIATION -->
+        <section class="reveal mb-64 bg-white/50 p-16 md:p-32 rounded-sm border border-stone-100">
+            <h2 class="serif text-5xl italic mb-20 font-light text-stone-800">Little Things I Appreciate</h2>
+            <div class="grid md:grid-cols-2 gap-16">
+                <ul class="space-y-12 text-stone-600 font-light text-lg">
+                    <li class="flex gap-8 items-start">
+                        <span class="text-accent italic text-2xl font-serif">i.</span>
+                        <p>The way conversation doesn’t feel rushed.</p>
+                    </li>
+                    <li class="flex gap-8 items-start">
+                        <span class="text-accent italic text-2xl font-serif">ii.</span>
+                        <p>Your sense of humour, subtle but sharp.</p>
+                    </li>
+                    <li class="flex gap-8 items-start">
+                        <span class="text-accent italic text-2xl font-serif">iii.</span>
+                        <p>Willingness to be adventurous</p>
+                    </li>
+                </ul>
+                <ul class="space-y-12 text-stone-600 font-light text-lg">
+                    <li class="flex gap-8 items-start">
+                        <span class="text-accent italic text-2xl font-serif">iv.</span>
+                        <p>Your calm confidence.</p>
+                    </li>
+                    <li class="flex gap-8 items-start">
+                        <span class="text-accent italic text-2xl font-serif">v.</span>
+                        <p>The fact that you feel real, not curated.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION: VISUALS -->
+        <section class="reveal mb-64">
+             <div class="flex justify-between items-center mb-20">
+                <h2 class="serif text-5xl italic font-light text-stone-800">Visual Space</h2>
+                <span class="text-[10px] tracking-[0.3em] uppercase text-stone-400">Textures & Moments</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="image-container"><img src="herpictures/SIBAHLE 2.jpeg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-1000 grayscale hover:grayscale-0"></div>
+                <div class="image-container"><img src="herpictures/SIBAHLE 3.jpeg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-1000 grayscale hover:grayscale-0"></div>
+                <div class="image-container"><img src="herpictures/SIBAHLE 4.jpeg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-1000 grayscale hover:grayscale-0"></div>
+            </div>
+            <p class="mt-12 italic text-stone-400 font-light text-center text-lg">Nothing needs to be perfect here. Just things that feel right.</p>
+        </section>
+
+        <!-- SECTION: WISHES -->
+        <section class="reveal mb-64 text-center max-w-4xl mx-auto">
+            <h2 class="serif text-5xl md:text-7xl italic mb-16 font-light text-stone-800">About You</h2>
+            <div class="space-y-8 text-2xl md:text-3xl font-light text-stone-500 leading-relaxed">
+                <p>There’s something quietly powerful about the way you exist in the world. You carry warmth, intention, and a calm presence that doesn’t demand attention but naturally draws it in. You’re thoughtful, grounded, and real,the kind of person who leaves an impression not because of what you say, but because of how you make people feel.
+
+You remind me that softness can be strong, that sincerity still matters, and that being yourself, fully and unapologetically, is more than enough. There’s an ease in your energy that feels rare, and it’s the kind of energy that brings peace without even trying.</p>
+                <div class="w-12 h-[1px] bg-accent mx-auto my-12"></div>
+                <p class="text-stone-800 serif italic text-4xl md:text-5xl">And I must say you are extremely beautiful.</p>
+            </div>
+        </section>
+
+
+      <!-- SECTION: WISHES -->
+        <section class="reveal mb-64 text-center max-w-4xl mx-auto">
+            <h2 class="serif text-5xl md:text-7xl italic mb-16 font-light text-stone-800">About Me</h2>
+            <div class="space-y-8 text-2xl md:text-3xl font-light text-stone-500 leading-relaxed">
+                <p>I’m someone who believes in purpose and passion, in chasing ideas that mean something and creating moments that last. I put my heart into everything I do, whether it’s through work, creativity, music, or projects that help others grow. I value honesty, curiosity, and laughter, and I try to live in a way that reflects those values.
+
+I notice the small things, the details that make people who they are, and I carry that same care into the way I show up in life. I hope my future is filled with growth, creativity, and moments that feel real. And if life allows it, I’d love to share some of those moments with someone who inspires me… someone like you.</p>
+                <div class="w-12 h-[1px] bg-accent mx-auto my-12"></div>
+
+            </div>
+        </section>      
+
+       
+
+        <!-- SECTION: FINAL NOTE -->
+        <section class="reveal mb-72 flex flex-col items-center">
+            <div class="max-w-2xl text-center">
+                <h2 class="serif text-5xl md:text-8xl italic mb-16 font-light text-stone-900 leading-tight">Happy Birthday, <br> Sibahle 🌱</h2>
+                <div class="space-y-10 text-stone-500 font-light text-xl leading-loose">
+                    <p>I enjoy creating things when something feels worth acknowledging.</p>
+                    <p>This felt like one of those moments.</p>
+                </div>
+                <div class="mt-24 text-center">
+                    <p class="serif italic text-4xl text-stone-800">Mpumelelo</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-24 bg-stone-100 border-t border-stone-200 relative z-20">
+        <div class="max-w-6xl mx-auto px-12 flex flex-col md:flex-row justify-between items-center opacity-40 text-[9px] uppercase tracking-[0.6em] space-y-10 md:space-y-0 text-center text-stone-600">
+            <div>© 2025 Mpumelelo Hlongwane</div>
+            <div class="serif lowercase italic text-xl tracking-normal opacity-80 text-stone-900">FROM ME TO YOU AND ONLY YOU. DESIGNED BY MPUMELELO HLONGWANE</div>
+    
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

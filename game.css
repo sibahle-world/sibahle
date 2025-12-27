@@ -1,0 +1,113 @@
+body {
+
+  display: flex;
+  background-image: url(portfoliopictures/snakegamebg.jpeg);
+  flex-direction: column;
+
+  align-items: center;
+
+  font-family: Arial, sans-serif;
+
+  background-color: #f4f4f4;
+
+  margin: 0;
+
+}
+
+
+
+h1 {
+
+  margin: 20px;
+
+  text-align: center;
+
+}
+
+
+
+canvas {
+
+  border: 2px solid #171f88;
+
+  background-color: #fff;
+
+}
+
+
+
+#controls {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin: 20px;
+
+}
+
+
+
+#controls div {
+
+  display: flex;
+
+  justify-content: center;
+
+}
+
+
+
+#controls button {
+
+  width: 60px;
+
+  height: 60px;
+
+  font-size: 20px;
+
+  margin: 5px;
+
+  background-color: #4caf50;
+
+  color: #fff;
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+}
+
+
+
+#controls button:active {
+
+  background-color: #388e3c;
+
+}
+
+
+
+#score {
+
+  margin: 10px;
+
+  font-size: 18px;
+
+}
+
+
+
+@media (min-width: 600px) {
+
+  #controls {
+
+    display: none; /* Hide touch controls on larger screens */
+
+  }
+
+}
