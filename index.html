@@ -124,6 +124,62 @@
                 opacity: 0;
             }
         }
+
+                /* Break Section */
+        .break-section {
+            background-color: rgba(249, 249, 249, 0.9);
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--neutral-border);
+        }
+
+               .btn:hover {
+            background-color: var(--accent-coffee);
+            color: var(--primary-white);
+        }
+
+        .btn-peach {
+            background-color: var(--accent-peach);
+            border-color: var(--accent-peach);
+            color: var(--accent-coffee);
+        }
+
+        .btn-peach:hover {
+            background-color: transparent;
+            color: var(--accent-coffee);
+        }
+
+           .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: transparent;
+            color: var(--accent-coffee);
+            border: 1px solid var(--accent-coffee);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: var(--transition);
+            width: fit-content;
+        }
+
+           .btn-peach:hover {
+            background-color: transparent;
+            color: var(--accent-coffee);
+        }
+
+        /* Categories Section */
+        .category-block {
+            margin-bottom: 80px;
+        }
+
+        .category-block:last-child {
+            margin-bottom: 0;
+        }
+
+
     </style>
 </head>
 <body class="selection:bg-stone-200">
@@ -305,19 +361,13 @@ I notice the small things, the details that make people who they are, and I carr
 
        
 
-        <!-- SECTION: FINAL NOTE -->
-        <section class="reveal mb-72 flex flex-col items-center">
-            <div class="max-w-2xl text-center">
-                <h2 class="serif text-5xl md:text-8xl italic mb-16 font-light text-stone-900 leading-tight">Happy Birthday, <br> Sibahle 🌱</h2>
-                <div class="space-y-10 text-stone-500 font-light text-xl leading-loose">
-                    <p>I enjoy creating things when something feels worth acknowledging.</p>
-                    <p>This felt like one of those moments.</p>
-                </div>
-                <div class="mt-24 text-center">
-                    <p class="serif italic text-4xl text-stone-800">Mpumelelo</p>
-                </div>
-            </div>
+      <!-- Break -->
+        <section class="break-section">
+            <h2 class="section-header" style="margin-bottom: 20px;">The Lounge</h2>
+            <p style="margin-bottom: 30px; font-weight: 300;">A brief moment of interaction. A classic game i made for you just to unwind Dali!</p>
+            <a href="game.html" class="btn btn-peach">Enter Game</a>
         </section>
+
 
     </main>
 
