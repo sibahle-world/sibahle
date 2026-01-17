@@ -1,63 +1,79 @@
- function enterPortal() {
-            document.getElementById('portal').classList.add('portal-exit');
-            setTimeout(() => {
-                document.getElementById('portal').style.display = 'none';
-                revealElements();
-                startPetals();
-            }, 1800);
+ // --- 1. Intersection Observer for Animations ---
+        const observerOptions = { threshold: 0.3 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.message-block, .the-question').forEach(el => observer.observe(el));
+
+        // --- 2. Petal Rain Logic ---
+        const canvas = document.getElementById('petal-canvas');
+        const ctx = canvas.getContext('2d');
+        let petals = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
 
-        function revealElements() {
-            const observerOptions = { threshold: 0.1 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }
-
-        function createPetal() {
-            const container = document.getElementById('petal-container');
-            if (!container) return;
-
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            
-            // Randomize size
-            const sizeNum = Math.random() * 20 + 12;
-            petal.style.width = sizeNum + 'px';
-            petal.style.height = (sizeNum * 0.8) + 'px';
-            
-            // Randomize position
-            petal.style.left = Math.random() * 100 + 'vw';
-            
-            // Subtle color variations (warmer vs cooler pinks)
-            const variations = ['#d4a5a5', '#c99494', '#bd8585'];
-            petal.style.backgroundColor = variations[Math.floor(Math.random() * variations.length)];
-
-            // Randomize animation duration and delay
-            const duration = Math.random() * 5 + 8 + 's';
-            petal.style.animationDuration = duration;
-            
-            container.appendChild(petal);
-            
-            // Cleanup petal after animation
-            setTimeout(() => {
-                petal.remove();
-            }, parseFloat(duration) * 1000);
-        }
-
-        function startPetals() {
-            // Initial burst
-            for(let i = 0; i < 20; i++) {
-                setTimeout(createPetal, Math.random() * 4000);
+        class Petal {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.w = Math.random() * 15 + 5;
+                this.h = this.w * 0.8;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.speed = Math.random() * 1 + 0.5;
+                this.rotation = Math.random() * 360;
+                this.spin = Math.random() * 2 - 1;
             }
-            // Continuous flow
-            setInterval(createPetal, 700);
+            draw() {
+                this.y += this.speed;
+                this.rotation += this.spin;
+                if (this.y > canvas.height) this.init();
+                
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.w, this.h, 0, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(226, 182, 177, ${this.opacity})`;
+                ctx.fill();
+                ctx.restore();
+            }
         }
 
-        window.addEventListener('scroll', revealElements);
+        for (let i = 0; i < 50; i++) petals.push(new Petal());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            petals.forEach(p => p.draw());
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- 3. Interaction Logic ---
+        function celebrate() {
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'flex';
+            setTimeout(() => overlay.style.opacity = '1', 50);
+            
+            // Add a burst of petals
+            for (let i = 0; i < 100; i++) petals.push(new Petal());
+        }
+
+        // Fun interaction for the "No" button replacement
+        const moveBtn = document.getElementById('btn-move');
+        moveBtn.addEventListener('mouseover', () => {
+            if (window.innerWidth > 768) {
+                moveBtn.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+            }
+        });
+        moveBtn.addEventListener('click', celebrate);
